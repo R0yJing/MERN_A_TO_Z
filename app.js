@@ -20,7 +20,7 @@ app.use("/api/books", books);
 
 console.log("env port" + process.env.PORT);
 
-const PORT = 5002;
+const PORT = process.env.PORT;
 console.log("port = ", PORT);
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,5 +32,6 @@ app.use(express.static(path.resolve(__dirname, "./my-app/build")));
 app.get("*", function (request, response) {
   response.sendFile(path.resolve(__dirname, "./my-app/build", "index.html"));
 });
+
 ///////////////////
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT || 8082, () => console.log(`Server running on port ${PORT}`));
