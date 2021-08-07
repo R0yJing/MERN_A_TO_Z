@@ -18,7 +18,11 @@ app.use(express.json({ extended: false }));
 app.get("/", (req, res) => res.send("Hello world!"));
 app.use("/api/books", books);
 
-const PORT = process.env.PORT || 8082;
+console.log("env port" + process.env.PORT);
+
+const PORT = 5002;
+console.log("port = ", PORT);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
